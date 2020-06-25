@@ -100,32 +100,34 @@ def load_data(city, month, day):
         day = day.capitalize()
     
     # If neither month nor day is "all", filter by month and day
-    if (month!='all') and (day!='all'):
-        df = df.loc[(df['Start Time'].dt.month_name()==month) & (df['Start Time'].dt.day_name()==day)]
+    if (month != 'all') and (day != 'all'):
+        df = df.loc[(df['Start Time'].dt.month_name() == month) & (df['Start Time'].dt.day_name() == day)]
     # Else if month is "all" and day is not "all", filter only by day
-    elif (month=='all') and (day !='all'):
-        df = df.loc[df['Start Time'].dt.day_name()==day]
+    elif (month == 'all') and (day != 'all'):
+        df = df.loc[df['Start Time'].dt.day_name() == day]
     # Else if day is "all" and month is not "all", filter only by month
-    elif (month!='all') and (day =='all'):
-        df = df.loc[df['Start Time'].dt.month_name()==month]
+    elif (month != 'all') and (day == 'all'):
+        df = df.loc[df['Start Time'].dt.month_name() == month]
     # Else if both month and day is "all", apply no month or day filter
 
     return df
+
 def filtered_choice(df):
     common_months = df['Start Time'].dt.month_name().value_counts()
     common_days = df['Start Time'].dt.day_name().value_counts()
     # If there is only one month and one day in the DataFrame, the filter is both
-    if (len(common_days)==1) and (len(common_months)==1):
+    if (len(common_days) == 1) and (len(common_months) == 1):
         filtered = 'Both'
     # Else if there only one month and more than one day in the DataFrame, the filter is month
-    elif (len(common_days)!=1) and (len(common_months)==1):
+    elif (len(common_days) != 1) and (len(common_months) == 1):
         filtered = 'Month'
     # Else if there only one day and more than one month in the DataFrame, the filter is day
-    elif (len(common_days)==1) and (len(common_months)!=1):
+    elif (len(common_days) == 1) and (len(common_months) != 1):
         filtered = 'Day'
     # Else the filter is none
     else:
         filtered = 'None'
+        
     return filtered
 
 def time_stats_day(df,filtered):
