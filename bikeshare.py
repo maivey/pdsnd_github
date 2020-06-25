@@ -357,8 +357,12 @@ def print_raw(df):
 
 def main():
     while True:
+        # Ask user to specify a city, month, and day to analyze.
         city, month, day = get_filters()
+
+        # Return the data filtered by city, month, and day
         df = load_data(city, month, day)
+
 
         time_stats(df)
         station_stats(df)
