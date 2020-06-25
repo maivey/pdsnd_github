@@ -363,7 +363,7 @@ def main():
         # Return the data filtered by city, month, and day
         df = load_data(city, month, day)
 
-
+        # Calculate the statistics for time, station, trip, and user
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
