@@ -111,6 +111,7 @@ def load_data(city, month, day):
     # Else if both month and day is "all", apply no month or day filter
 
     return df
+
 def filtered_choice(df):
     common_months = df['Start Time'].dt.month_name().value_counts()
     common_days = df['Start Time'].dt.day_name().value_counts()
@@ -126,6 +127,7 @@ def filtered_choice(df):
     # Else the filter is none
     else:
         filtered = 'None'
+        
     return filtered
 
 def time_stats_day(df,filtered):
